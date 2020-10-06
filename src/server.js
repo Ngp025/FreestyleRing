@@ -78,7 +78,7 @@ app.use(multer({ storage }).single('image')); //determinando imagen
 
 // Routes
 // - - - - USSERS
-//app.use('/users', require('../backend/routes/users/users.routes'));
+app.use('/users', require('../backend/routes/users.routes'));
 
 // Starting server
 const server = app.listen(app.get('port'), () => {
