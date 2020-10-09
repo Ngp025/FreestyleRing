@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// AQUI SE COLOCA LA URL DE MONGODB ATLAS
 console.log(process.env.MONGODB_URI)
 mongoose.connect(
   process.env.MONGODB_URI,

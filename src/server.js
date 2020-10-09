@@ -1,8 +1,8 @@
 // ---------------------------    Index Back en versus
 //DOTENV
-if (process.env.NODE_ENV !== 'production') {
+//if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
-}
+//}
 // Local Functions
 // Importar FrameWorks: Express, Morgan, Path
 const cors = require('cors'); // Cors se conecta con los edpoints de facebook o mejor dicho facilita la conexion
