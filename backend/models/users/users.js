@@ -4,10 +4,6 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema(
   {
     // ---------------- Login
-    nickname: {
-      type: String,
-      default: '',
-    },
     email: {
       type: String,
       //required: true,
@@ -35,10 +31,7 @@ const UserSchema = new Schema(
     name: {
       type: String,
     },
-    lastname: {
-      type: String,
-    },
-    gender: {
+    mcName: {
       type: String,
     },
     born: {
@@ -55,53 +48,11 @@ const UserSchema = new Schema(
       type: String,
       default: 0,
     },
-    nicknamesHistory: {
-      type: Array,
-    },    
-    club: {
-      type: String,
-      default: '',
-    },
-    passportID: {
-      type: String,
-      default: 'null',
-    },
-    password: {
+    link: {
       type: String,
     },
-    token: {
+    social: {
       type: String,
-      default: '33vs33',
-    },
-    temporaryPassword: {
-      type: String,
-    },
-    tempToken: {
-      type: String,
-    },
-    //----------------- Info de Api
-    apiLol: {
-      id: {
-        type: String,
-      },
-      accountId: {
-        type: String,
-      },
-      puuid: {
-        type: String,
-      },
-      name: {
-        type: String,
-      },
-      profileIconId: {
-        type: String,
-      },
-      revisionDate: {
-        type: String,
-      },
-      summonerLevel: {
-        type: String,
-      },
     },
     // ---------------- Para Menos de 16
 
@@ -114,21 +65,12 @@ const UserSchema = new Schema(
       type: String,
       default: ' - ',
     },
-
     // ---------------- Vista de favoritos
-    fViews: {
-      type: Array,
-      default: [],
-    },
 
     // ---------------- Terminos y Condiciones
     termAgreed: {
       type: Boolean,
-      default: false,
-    },
-    customerReg: {
-      type: String,
-      default: 'Plataforma Esport',
+      default: true,
     },
     /*
      *iPinfo: {

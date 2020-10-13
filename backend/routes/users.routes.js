@@ -48,7 +48,16 @@ users.put('/editProfile/:IDU', async (req, res) => {
 });
 
 // - - - - -  GET
-//visualizando favoritos (sin pulir )
+users.get('/mclist', async (req, res) =>{
+ var mcList = await User.find({},{
+   _id: false,
+   mcName :true,
+   link: true,
+   social: true  
+    })
+ res.json(mcList)
+} )
+// Logout
 users.get('/logout/:IDU', async (req, res) => {
   //COLOCAR UN CONTADOR DE USUARIOS ELIMINADOS CON IPS
   const { IDU } = req.params;
@@ -126,7 +135,8 @@ users.get('/betalogin/:email/:password', async (req, res) => {
 });
 
 // - - - - -  POST
-users.post('/betaregister/:email/:emailVerify', async (req, res) => {
+// Inscripción
+users.post('/betaregister/:email', async (req, res) => {
   var regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   var verify = "true" //req.params.emailVerify
   if (regex.test(req.params.email) === true) {
@@ -139,7 +149,22 @@ users.post('/betaregister/:email/:emailVerify', async (req, res) => {
         alert: 'Disculpe, \n Este email ya se encuentra registrado.',
       });
     } else {
-      console.log("Aqui en este else en user.routes")
+      var newUserToSave = {
+        name: req.body.nameR,
+        mcName: req.body.mcName,
+        email: req.body.emailR,
+        document: req.body.documentR,
+        address: req.body.direccionR,
+        born: req.body.dateR,
+        link: req.body.link,
+        social: req.body.social || '-' ,
+        tutorsName: req.body.nameTutorR || '-',
+        tutorsDocument: req.body.documentTutorR || '-',
+      };
+      console.log(newUserToSave , "-- Usuario a guardar")
+      await User.create(newUserToSave).then(
+        res.json("congrats")
+      ) 
     }
   } else {
     console.log('NO CUMPLE');
