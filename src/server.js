@@ -12,7 +12,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
-const multer = require('multer'); //lector visual
+
 // Importamos las referencias a la Base de dato
 require('../backend/database');
 
@@ -66,15 +66,6 @@ app.use(sessionMiddleware);
 
 // STATICS FILES (HTML estáticos, JS, CSS,...)
 app.use(express.static(path.join(__dirname, 'public')));
-
-//Files
-const storage = multer.diskStorage({
-  destination: path.join(__dirname, 'public/uploads'), // ubicacion
-  filename: (req, file, cb) => {
-    cb(null, new Date().getTime() + path.extname(file.originalname)); //para que sea singular cada imagen le coloco el nombre del minuo
-  },
-});
-app.use(multer({ storage }).single('image')); //determinando imagen
 
 // Routes
 // - - - - USSERS

@@ -64,7 +64,7 @@ users.get('/logout/:IDU', async (req, res) => {
   console.log(IDU);
   await Connetion.deleteOne({ IDU: IDU });
 });
-users.get('/betalogin/:email/:password', async (req, res) => {
+users.get('/betalogin/:email/:password/', async (req, res) => {
   if (!req.params.email || !req.params.password) {
     console.log('ERROR');
     res
@@ -136,7 +136,7 @@ users.get('/betalogin/:email/:password', async (req, res) => {
 
 // - - - - -  POST
 // Inscripción
-users.post('/betaregister/:email', async (req, res) => {
+users.post('/betaregister/:email/1234', async (req, res) => {
   var regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   var verify = "true" //req.params.emailVerify
   if (regex.test(req.params.email) === true) {
