@@ -1,3 +1,4 @@
+const { json } = require('express');
 const express = require('express');
 const users = express.Router();
 const User = require('../models/users/users');
@@ -12,6 +13,11 @@ users.get('/mclist', async (req, res) =>{
    social: true,
    views: true,  
     })
+    res.json(mcList.sort())
+  })
+
+// - - - - -  POST
+/*
     var orderViews = []
     for(var i = 0 ; i < mcList.length ; i++){
       //console.log(mcList[i].views)
@@ -20,38 +26,56 @@ users.get('/mclist', async (req, res) =>{
     var sortOrderViews = orderViews.sort(function(a, b){return b-a})
     var actualIndex = [0]
     var orderMcList = []
+    
     function filterMc () {
       function indexHandler(){
         var newIndex = actualIndex[0]+1
         actualIndex.pop()
         actualIndex.push(newIndex)
       }
+      function eliminar(array, elemento) {
+        var resultado = []
+        for (var i = 0; i < array.length; i++) {
+          if (array[i] !== elemento) {
+            resultado.push(array[i]);
+          }
+        }
+        return resultado;
+      }
       function filter(){
         var filterIndex = []
         filterIndex.pop()
         filterIndex.push(actualIndex[0])
         for(var i = 0 ; i < mcList.length ; i++){
-          mcList[i].views === sortOrderViews[actualIndex[0]] ? orderMcList.push(mcList[i]): ""
+          if( mcList[i].views === sortOrderViews[actualIndex[0]]){
+            orderMcList.push(mcList[i]);
+            //mcList.pop()
+            var array = mcList;
+            //console.log(array.length)
+            array = eliminar(array, mcList[i]);
+            //console.log( array.length );
+          }
         }
         if (orderMcList.length === mcList.length){
           console.log("Fin")
         }else{
-          indexHandler()
+          indexHandler();
         }
       }
-      for(var z = 0 ; z < mcList.length; z++){
-        filter()
-      }
+      console.log(orderMcList.length, "orderlenh")
+      console.log(mcList.length, "mcList Len")
+      filter()
     }
-    filterMc()
-  res.json(orderMcList)
-} )
 
-// - - - - -  POST
+    if(orderMcList.length === mcList.length){
+
+    }else{
+      filterMc();
+    }     
+*/
 // Views
 users.post('/views/:IDU/:mcName', async (req, res) => {
   const { IDU } = req.params;
-  console.log(IDU)
   const { mcName } = req.params
   User.findOneAndUpdate( {_id : IDU}, { $inc : {views : 1} }).then(
     console.log(`Usuario ${mcName} incremento sus vistas en 1`)
@@ -59,7 +83,6 @@ users.post('/views/:IDU/:mcName', async (req, res) => {
 })
 // Inscripción
 users.post('/betaregister/',
-
  async (req, res) => {
     //var regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     //var verify = "true" //req.params.emailVerify
