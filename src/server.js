@@ -1,37 +1,51 @@
+const express = require('express');
+const path = require('path');
+const http = require('http')
+
+const app = express();
+const server = http.createServer(app);
+
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'public')));
+
+server.listen(app.get('port'), () => {
+  console.log(`Server on port ${app.get('port')}`);
+});
+
+
 // ---------------------------    Index Back en versus
 //DOTENV
 //if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+//  require('dotenv').config();
 //}
 // Local Functions
 // Importar FrameWorks: Express, Morgan, Path
-const cors = require('cors'); // Cors se conecta con los edpoints de facebook o mejor dicho facilita la conexion
-const bodyParser = require('body-parser');
-const express = require('express');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const morgan = require('morgan');
-const path = require('path');
+//const cors = require('cors'); // Cors se conecta con los edpoints de facebook o mejor dicho facilita la conexion
+//const bodyParser = require('body-parser');
+
+//const session = require('express-session');
+//const cookieParser = require('cookie-parser');
+//const morgan = require('morgan');
+//
 
 // Importamos las referencias a la Base de dato
-require('../backend/database');
+//require('../backend/database');
 
 // Llamada a constante de express
-const app = express();
+
 
 // SETTINGS
-app.set('port', process.env.PORT || 4000); // el || es una segunda opcion solo de emergencia por si no lee .env
 
 //Para la terminal (Middlerware)
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 
 // Middlewares (funciones que se ejecutan antes de las rutas)
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.text());
+//app.use(cors());
+//app.use(bodyParser.json());
+//app.use(bodyParser.text());
 
-// Configurando https
 /*
+// Configurando https
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production') {
     if (req.headers.host === 'freestylering.herokuapp.com') {
@@ -60,23 +74,22 @@ const sessionMiddleware = session({
 */
 
 // Middlewares de Express que nos permiten enrutar y poder realizar peticiones HTTP (GET, POST, PUT, DELETE)
-app.use(express.json());
-app.use(cookieParser());
-app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: false })); //(false) asi no entiendo imagenes pesadas
-app.use(sessionMiddleware);
+//app.use(express.json());
+//app.use(cookieParser());
+//app.use(express.urlencoded({ extended: false }));
+//app.use(bodyParser.urlencoded({ extended: false })); //(false) asi no entiendo imagenes pesadas
+//app.use(sessionMiddleware);
 
 // STATICS FILES (HTML estáticos, JS, CSS,...)
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Routes
 // - - - - USSERS
-app.use('/users', require('../backend/routes/users.routes'));
+//app.use('/users', require('../backend/routes/users.routes'));
 
 // Starting server
-const server = app.listen(app.get('port'), () => {
-  console.log(`Server on port ${process.env.PORT}`);
-});
+
+
 
 
 

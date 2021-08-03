@@ -1,5 +1,5 @@
 {
-  "name": "FreestyleRing",
+  "name": "freestylering",
   "version": "1.0.0",
   "engines": {
     "node": "10.3.0"
@@ -7,7 +7,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "src/public/index.html",
+    "start": "cross-env NODE_ENV=production node src/server.js",
     "dev": "cross-env NODE_ENV=development nodemon src/server.js",
     "webpack": "webpack --mode development --watch ",
     "webpack2": "webpack --mode production --watch"
