@@ -31,9 +31,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 
 // Configurando https
+/*
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production') {
-    if (req.headers.host === 'app-fifa.herokuapp.com') {
+    if (req.headers.host === 'freestylering.herokuapp.com') {
       // make express use your custom domain name instead of heroku's default
       return res.redirect(301, 'https://www.your-domain-name.com');
     }
@@ -56,6 +57,7 @@ const sessionMiddleware = session({
   saveUninitialized: true,
   cookie: { secure: true },
 });
+*/
 
 // Middlewares de Express que nos permiten enrutar y poder realizar peticiones HTTP (GET, POST, PUT, DELETE)
 app.use(express.json());
