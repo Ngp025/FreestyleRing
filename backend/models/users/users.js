@@ -4,6 +4,12 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema(
   {
     // ---------------- Login
+    email: {
+      type: String,
+      //required: true,
+      unique: true,
+      match: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+    },
     email_verified: {
       type: Boolean,
       default: false,
@@ -19,13 +25,14 @@ const UserSchema = new Schema(
       type: String,
       default: 'es',
     },
+    teams: { type: Array, default: [] },
+
     // ---------------- Info del settings
     name: {
       type: String,
     },
     mcName: {
       type: String,
-      unique: true,
     },
     born: {
       type: String,
@@ -40,7 +47,6 @@ const UserSchema = new Schema(
     document: {
       type: String,
       default: 0,
-      unique: true,
     },
     link: {
       type: String,
@@ -58,11 +64,6 @@ const UserSchema = new Schema(
     tutorsDocument: {
       type: String,
       default: ' - ',
-    },
-
-    views: {
-      type: Number,
-      default: 0,
     },
     // ---------------- Vista de favoritos
 
