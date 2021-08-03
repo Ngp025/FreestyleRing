@@ -7,7 +7,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "src/public/index.js",
+    "start": "src/public/index.html",
     "dev": "cross-env NODE_ENV=development nodemon src/server.js",
     "webpack": "webpack --mode development --watch ",
     "webpack2": "webpack --mode production --watch"
