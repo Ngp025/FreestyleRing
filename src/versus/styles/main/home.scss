@@ -1,0 +1,846 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+// Classic Template
+$classicFont: '$classicFont', sans-serif;
+$classicColor: #fb2062;
+$sub-title: rgb(252, 243, 119);
+$background-color: #323346;
+$marginAutoWidth: 0 auto;
+$viewIndex0: 0;
+$viewIndex1: 10;
+$viewIndex2: 20;
+$viewIndex3: 30;
+$viewIndex4: 40;
+$viewIndex5: 50;
+//Standar vertical Align
+$marginTop : 30px;
+// Local 
+$input-bg: white;
+$input-color: #323346;
+$placeholder-color: rgb(194, 194, 194);
+
+
+
+// Register Mixin
+@mixin registerLabel() {
+  display: inline-block;
+  margin-top: 18px;
+  width: 90%;
+  height: 12px;
+  font-family: $classicFont;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 12px;
+  letter-spacing: normal;
+  text-align: left;
+  color: $sub-title !important;
+};
+@mixin registerField() {
+  display: inline-block;
+  width: 90% !important;
+  margin: 0 auto !important;
+  height: 26px;
+  background: rgba(194, 194, 194 , 0.25);
+  font-family: $classicFont;
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  resize: none;
+  text-align: left;
+  overflow: hidden;
+  outline: 10px solid transparent;
+  border: none;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom: 1px solid $sub-title ;
+  color: whitesmoke;
+  &::placeholder {
+    font-size: 11px;
+    line-height: 33px;
+    color: $placeholder-color !important;
+  }
+};
+// Button Mixin
+@mixin classicButton(){
+  cursor: pointer;
+  display: inline-block;
+  background-color: transparent;
+  width: 80% ;
+  height: 40px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 6px;
+  border: 1px solid $sub-title;
+  font-family: $classicFont;
+  font-size: 14px;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 30px;
+  letter-spacing: normal;
+  text-align: center;
+  color: $sub-title;
+  background-color: $background-color;
+  :hover{
+    $background-color: $sub-title;
+    color: $background-color;
+  }
+};
+@mixin image-title{
+  .land-title-img{
+    display: inline-block;
+    margin: 0 auto !important;
+    width: 100%;
+    height: 100px;
+  }
+};
+@mixin text_title{
+  .text-title {
+    display: inline-block;
+    margin: 9.5px auto !important;
+    width: 100%;
+    height: 24px;
+    text-align: left;
+    font-family: $classicFont;
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: normal;
+    color: $sub-title;
+  }
+}
+// Vertical Align mixing
+@mixin xs-vertical-align {
+  @media (min-height : #{530px}){
+    max-height: 415px;
+  }
+  @media (min-height : #{630px}){
+    max-height: 515px;
+  }
+  @media (min-height : #{730px}){
+    max-height: 615px;
+  }
+  overflow: scroll;
+}
+html{
+  display: block;
+  width: 100vw;
+  height: auto !important;
+  min-height: 100%;
+  background:
+  linear-gradient(336deg, rgb(44, 39, 11), rgba(240, 213, 81, 0.3) 70.71%),
+  linear-gradient(127deg, rgb(65, 58, 21), rgba(240, 213, 81,0.3) 70.71%),
+  linear-gradient(217deg, rgb(49, 47, 37), rgba(240, 213, 81,0.3) 70.71%);
+}
+$body-min-height: 525px;
+body{
+  display: block !important;
+  height: auto !important;
+  min-height: $body-min-height;
+  width: inherit;
+  margin: 0 !important;
+  }
+#footer-bar{
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 30px;
+  background-color: $background-color;
+  font-family: $classicFont;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+input{
+  padding: none !important 
+}
+@mixin home-xs{
+  $xs-content-width: 90%;
+  #render-div{
+    position: relative;
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    // Home Content
+      // Header
+      .header{
+        display: block;
+        width: inherit;
+        position: sticky;
+        padding-top: 6.75px;
+        padding-bottom: 6.75px;
+        background-color: $background-color;
+        .navigation-bar{
+          display: block;
+          width: 80%;
+          margin-left: 10%;
+          .return-button{
+            position: absolute;
+            margin-top: 16px;
+            width: 24px;
+            height: 24px;
+          }
+          .colapsed{
+            width: 40%;
+            margin-left: 30%;
+            margin-right: 30%;
+            transition: 1s;
+          }
+          .expanded{
+            position: static;
+            margin: 0 !important;
+            margin-left: 7.5% !important;
+            left: 0;
+            width: 85%;
+            transition: 1s;
+          }
+        }
+        .title-img{
+          width: 80%;
+          //display: none;
+          display: block;
+          margin: 12.5px auto;
+          margin-left: 10%;
+        }
+      }
+      // Footer-Bar
+
+    // Vertical Align - Components
+    $center-comps-heigth: auto;
+    $center-comps-max-heigth: 500px;
+    .content-align{
+      position: relative;
+      margin: 0 auto;
+      width: $xs-content-width;
+      height: $center-comps-heigth;
+      .main-logo{
+        position: relative;
+        font-size: 44px;
+        width: 70%;
+        margin-left: 15%;
+      }
+      .main-subtitle{
+        width: 70%;
+        margin: 0 auto;
+        margin-left: 15%;
+        font-size: 21px;
+        font-weight: 100;
+        font-family: $classicFont;
+        color: $sub-title;
+      }
+      .help-content{
+        width: 100%;
+        height: 64px;
+        margin: 0 auto;
+        .help-label{
+          position: relative;
+          font-size: 14px;
+          line-height: 64px;
+          width: inherit !important;
+          margin: 0 auto;
+          text-align: center;
+          font-family: $classicFont;
+          font-weight: 300;
+          color: aliceblue;
+        }
+      }
+    }
+    // Login content
+    .login-content {
+      border-radius: 6px;
+      width: $xs-content-width;
+      background-color: transparent;
+      height: $center-comps-heigth;
+      @include xs-vertical-align();
+      overflow-y: scroll;
+      margin: 0 auto !important;
+      text-align: center !important;
+      padding: 5px !important;
+      $s-width: 100%;
+      box-sizing: none !important;
+      @include text_title();
+      .register-box {
+        display: block !important;
+        width: 100%;
+        height: auto;
+        background-color: $background-color;
+        border-radius: 6px;
+        padding-bottom: 12.5px;
+        .label-name-register {
+          @include registerLabel();
+          border: 1px solid transparent;
+        }
+        .name-register {
+          @include registerField();
+        }
+        .label-mc-register{
+          @include registerLabel();
+        }
+        .mc-register{
+          @include registerField();
+        }
+        .label-email-register {
+          @include registerLabel();
+          display: none !important;
+        }
+        .email-register {
+          @include registerField();
+          display: none !important;
+        }
+        .label-date-register {
+          @include registerLabel();
+        }
+        .date-register {
+          @include registerField();
+          ::-webkit-inner-spin-button {
+            display: none;
+          }
+          ::-webkit-calendar-picker-indicator:hover {
+            background: none;
+          }
+        } 
+        .tutor-auth {
+          @include registerLabel();
+          color: rgb(243, 169, 126) !important;
+        }
+        .label-document-register {
+          @include registerLabel();
+        }
+        .document-input {
+          @include registerField();
+        }
+        .label-city-register {
+          @include registerLabel();
+        }
+        .city-register {
+          @include registerField();
+        }
+        .label-link-register {
+          @include registerLabel();
+        }
+        .link-register {
+          @include registerField();
+        }
+        .label-social-register {
+          @include registerLabel();
+        }
+        .social-register {
+          @include registerField();
+        }
+        .label-policy-register {
+          cursor: pointer;
+          @include registerLabel();
+          .terms{
+            color: rgb(97, 156, 243) !important;
+          }
+        }
+        .register-submit {
+          margin-top: 12.5px !important;
+          @include classicButton()
+        }
+      }
+      .congrats-box {
+        background-color: $background-color;
+        border-radius: 3px;
+        border: solid 2px $sub-title;
+        width: 100%;
+        height: auto;
+        padding-top: 150px;
+        padding-bottom: 250px;
+        @include text_title();
+        .congrats-img {
+          width: 75px !important;
+          height: 75px;
+          }
+        .land-title-img{
+          display: inline-block;
+          margin: 0 auto !important;
+          width: $s-width;
+          height: 100px;
+        }
+      }
+      .updating-box{
+        display: "none";
+        background-color: transparent;
+        border-radius: 3px;
+        border: solid 2px transparent;
+        width: 70%;
+        height: auto;
+        padding-top: 150px;
+        padding-bottom: 250px;
+        .loading-img{
+          width: 100%;
+        }
+      }
+    }
+    // Land content
+    .pre-enroll-content{
+      border-radius: 6px;
+      width: $xs-content-width;
+      background-color: transparent;
+      height: $center-comps-heigth;
+      @include xs-vertical-align();
+      margin: 0 auto !important;
+      text-align: center !important;
+      padding: 5px !important;
+      $s-width: 90%;
+      box-sizing: none !important;
+      @include text_title;
+      .pre-enroll-data-box{
+        display: block !important;
+        width: 100%;
+        height: auto;
+        background-color: $background-color;
+        border-radius: 6px;
+        padding-top: 12.5px;
+        padding-bottom: 12.5px;
+        .compe-title{
+          display: inline-block;
+          margin: 0 auto !important;
+          width: $s-width;
+          height: 20px;
+          text-align: center;
+          font-family: $classicFont;
+          font-size: 20px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 20px;
+          letter-spacing: normal;
+          color: $sub-title;
+        }
+        .enroll-faq-1{
+          display: inline-block;
+          margin: 0 auto !important;
+          width: $s-width;
+          height: 35px;
+          text-align: left;
+          font-family: $classicFont;
+          font-size: 16px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 35px;
+          letter-spacing: normal;
+          color: $sub-title;
+        }
+        .enroll-p-1{
+          display: inline-block;
+          margin: 0 auto !important;
+          width: $s-width;
+          height: 60px;
+          text-align: left;
+          font-family: $classicFont;
+          font-size: 13px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 20px;
+          letter-spacing: normal;
+          color: white;
+        }
+        .enroll-faq-2{
+          display: inline-block;
+          margin: 0 auto !important;
+          width: $s-width;
+          height: 35px;
+          text-align: left;
+          font-family: $classicFont;
+          font-size: 16px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 35px;
+          letter-spacing: normal;
+          color: $sub-title;
+        }
+        .enroll-p-2{
+          display: inline-block;
+          margin: 0 auto !important;
+          width: $s-width;
+          height: 80px;
+          text-align: left;
+          font-family: $classicFont;
+          font-size: 13px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 20px;
+          letter-spacing: normal;
+          color: white;
+        }
+        .continue{
+          margin-top: 15px;
+          width: 60% !important;
+          @include classicButton();
+        }
+        .label-link-register {
+          @include registerLabel();
+        }
+        .link-register{
+          @include registerField();
+        }
+        .label-social-register{
+          @include registerLabel();
+        }
+        .social-register {
+          @include registerField();
+        }
+
+        .footer-content{
+          width: 90%;
+          margin: 0 auto;
+          margin-top: 12.5px;
+          .footer-title{
+            display: inline-block;
+            width: 100%;
+            line-height: 14px;
+            font-family: $classicFont;
+            font-size: 10px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            text-align: center;
+            color: white;
+          }
+          .compe-links-1{
+            display: inline-block;
+            width: 45%;
+            margin-top: 10px;
+            margin-left: 5%;
+            height: 50px;
+            .reglamento{
+              display: inline-block;
+              line-height: 25px;
+              font-family: $classicFont;
+              font-size: 12px;
+              font-weight: 500;
+              font-stretch: normal;
+              font-style: normal;
+              text-align: left;
+              width: 100%;
+              color: rgb(97, 156, 243);
+            }
+            .discord{
+              display: inline-block;
+              text-align: center;
+              line-height: 25px;
+              font-family: $classicFont;
+              font-size: 12px;
+              font-weight: 500;
+              font-stretch: normal;
+              font-style: normal;
+              text-align: left;
+              width: 100%;
+              color: rgb(97, 156, 243);
+            }
+          }
+          .compe-links-2{
+            display: inline-block;
+            width: 45%;
+            margin-top: 10px;
+            margin-left: 5%;
+            height: 50px;
+            .retadores{
+              display: inline-block;
+              line-height: 25px;
+              font-family: $classicFont;
+              font-size: 12px;
+              font-weight: 500;
+              font-stretch: normal;
+              font-style: normal;
+              text-align: left;
+              width: 100%;
+              color: rgb(97, 156, 243);
+            }
+            .pesos-pesados{
+              display: inline-block;
+              text-align: center;
+              line-height: 25px;
+              font-family: $classicFont;
+              font-size: 11px;
+              font-weight: 500;
+              font-stretch: normal;
+              font-style: normal;
+              text-align: left;
+              width: 100%;
+              color: rgb(97, 156, 243);
+            }
+          }
+        }
+      } 
+    }
+    // Land 2 content
+    .land-content{
+      border-radius: 6px;
+      width: $xs-content-width;
+      background-color: transparent;
+      height: $center-comps-heigth;
+      max-height: $center-comps-max-heigth;
+      margin: 0 auto !important;
+      text-align: center !important;
+      padding: 5px !important;
+      $s-width: 90%;
+      box-sizing: none !important;
+      @include text_title();
+        .land-data-box{
+          display: block !important;
+          width: 100%;
+          height: auto;
+          background-color: $background-color;
+          border-radius: 6px;
+          padding-top: 12.5px;
+          padding-bottom: 12.5px;
+          .enroll-help{
+            display: inline-block;
+            margin: 0px auto !important;
+            margin-top: 25px;
+            margin-bottom: 6.75px;
+            width: 80%;
+            height: 40px;
+            text-align: center;
+            font-family: $classicFont;
+            font-size: 13px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 20px;
+            letter-spacing: normal;
+            color: white;
+          }
+          .enroll{
+            @include classicButton();
+            margin-top: 12.5px !important;
+            margin-bottom: 25px !important;
+          }
+          .mcList-help{
+            display: inline-block;
+            margin: 0px auto !important;
+            margin-top: 25px;
+            margin-bottom: 6.75px;
+            width: 80%;
+            height: 40px;
+            text-align: center;
+            font-family: $classicFont;
+            font-size: 13px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 20px;
+            letter-spacing: normal;
+            color: white;
+          }
+          .mc-list{
+            @include classicButton();
+            margin-top: 6.75px !important;
+            margin-bottom: 12.5px !important;
+          }
+      }
+    }
+    // Mc List Content
+    .mcList-content{
+      border-radius: 6px;
+      width: $xs-content-width;
+      @include xs-vertical-align();
+      max-height: $center-comps-max-heigth;
+      margin: 0 auto;
+      background-color: transparent;
+      box-sizing: none !important;
+      .return-enroll{
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        top: 10px;
+        left: 10px;
+      }
+      @include text_title();
+      .mcList-box{
+        display: none !important;
+        width: 100%;
+        height: auto;
+        max-height: 525px;
+        @media (min-height: #{629px}){
+          @media (max-height: #{750px}){
+            max-height: 450px;
+          }
+        }
+        @media (max-height : #{630px}){
+          max-height: 375px;
+        }
+        background-color: transparent;
+        border-radius: 6px;
+        overflow: scroll;
+        //margin-top: 25px;
+        .loading-img{
+          margin-top: 25px;
+          width: 60%;
+          margin-left: 20%;
+        }
+        .mc-card{
+          display: inline-block;
+          width: 47.5%;
+          margin-top: 7.5px;
+          margin-bottom: 7.5px;
+          height: auto;
+          background-color: transparent;
+          &:nth-child(even){
+            margin-left: 5%;
+          } 
+          .card-header{
+            position: relative;
+            display: block;
+            height: 32px;
+            width: 100%;
+            background-color: $background-color;
+            border-radius: 6px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            //border: 1px solid $sub-title;
+            border-bottom: 0px solid $sub-title;
+            .mc-index{
+              color: $sub-title;
+              font-family: $classicFont;
+              font-size: 14px;
+              font-weight: 900;
+              font-stretch: normal;
+              font-style: normal;
+            }
+            .mc-img{
+              display: none;
+              position: absolute;
+              left: 5%;
+              top : 0px;
+              width: 45px;
+              height: 60px;
+              margin-top: 5px;
+              margin-bottom: 5px;
+              background-color: white;
+            }
+            .user-data-box{
+              width: 85px;
+              margin: 0 auto;
+              text-align: left;
+              .mc-name-label{
+                color: $sub-title;
+                font-family: $classicFont;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                font-size: 15px;
+                font-weight: 900;
+                font-stretch: normal;
+                font-style: normal;
+              }
+            }
+          }
+          .card-footer{
+            display: inline-block;
+            height: auto;
+            width: 100%;
+            margin-bottom: 5px      ;
+            text-align: left;
+            background-color: $background-color;
+            border-radius: 6px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            //border: 1px solid $sub-title;
+            border-top: 0px solid $sub-title;
+            .user-footer-box{
+              margin: 0 auto;
+              margin-top: 5px;
+              //background-color: white;
+              height: 100%;
+              width: 90px;
+              .mc-link{
+                display: inline-block;
+                margin-bottom: 5px;
+                //margin-right: 6.5px;
+                //margin-left: -8.5px;
+                width: 29px;
+                height: 29px;
+                object-fit: cover;
+                border: 1px solid rgba(252, 243, 119, 0.2);
+              }
+              .mc-space{
+                display: inline-block;
+                height: 80%;
+                margin-top: 5%;
+                opacity: 0.2;
+                background-color: $sub-title;
+                width: 1px;
+                margin-left: 10px;
+                margin-right: 10px;
+              }
+              .mc-social{
+                display: inline-block;
+                margin-bottom: 5px;
+                margin-left: 5px;
+                width: 29px;
+                height: 29px;
+                //border: 1px solid rgba(252, 243, 119, 0.2);
+                
+              }
+            }
+
+          }
+        }
+      }
+      .mcList-div{
+        width: 90%;
+        margin: 12.5px 5%;
+        height: 1px;
+        background-color: $sub-title;
+      }
+      .enroll{
+        @include classicButton();
+        position: absolute;
+      }
+    }
+  }
+}
+@mixin xl {
+  @media (min-width: #{1920px}) {
+    @media (max-width: #{1440px}) {
+    }
+  }
+}
+@mixin l {
+  @media (min-width: #{1280px}) {
+    @media (max-width: #{1440px}) {
+    }
+  }
+}
+@mixin s{
+  @media (min-width: #{426px}) {
+    @media (max-width: #{768px}) {
+    }
+  }
+}
+@mixin xs {
+  @media (max-width: #{426px}) {
+    @include home-xs
+  }
+}
+
+#responsive-home {
+  //padding-top: $marginTop;
+  height: inherit;
+  min-height: $body-min-height;
+  @include xl;
+  @include xs;
+  @include s;
+  @include l;
+}
