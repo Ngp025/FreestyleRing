@@ -1,0 +1,27 @@
+$heigth: 20px;
+$verticalMargin: 7.5px;
+label{
+    height: $heigth;
+    display: inline-block;
+    font-size: 18px;
+    padding: 0px;
+    margin: $verticalMargin 0px;
+    width: 25%;
+    background-color: rgba(27, 109, 240, 0.33);
+    border-radius: 0px;
+    border: 0px none;
+}
+input {
+    height: $heigth;
+    line-height: $heigth;
+    font-size: 18px;
+    display: inline-block;
+    padding: 0px;
+    margin: $verticalMargin 0px;
+    margin-top: -1px;
+    width: 60%;
+    background-color: rgba(27, 109, 240, 0.33);
+    border-radius: 0px;
+    border: 0px none;
+    outline: 0px;
+}

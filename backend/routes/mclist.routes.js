@@ -3,15 +3,15 @@ const mclist = express.Router();
 const Mclist = require('../models/users/mclist');
 
 // - - - - -  GET
-mclist.get('/mclist', async (req, res) =>{
- var mcList = await Mclist.find({},{
-   _id: false,
-   mcName :true,
+mclist.get('/', async (req, res) =>{
+  console.log("GET AQUI")
+await Mclist.find({},{
+   _id: true,
+   mcname :true,
    link: true,
-   social: true  
-    })
-    console.log(mcList)
- res.json(mcList)
+   social: true,
+   pts: true
+    }).then(data => res.json(data))
 })
 
 mclist.post('/newmc/:data', async (req, res) =>{
@@ -32,7 +32,32 @@ try{
 catch(err){
   res.json(err)
 }
+})
 
+mclist.put('/editmc/:id/:data', async (req, res)=>{
+  console.log(req.params.id, req.params.data)
+  try{
+    const { name, mcname, phone, link, social, pts } = JSON.parse(req.params.data)
+    await Mclist.findOneAndUpdate({_id: req.params.id},
+       {$set: {
+         mcname: mcname,
+         social: social,
+         pts: pts,
+        }})
+        res.json({status: 'MC actualizado'})
+  }catch(err){
+
+  }
+})
+
+mclist.delete('/delete/:id', async (req, res)=>{
+  console.log(req.params.id," <-- id")
+  try{
+    await Mclist.deleteOne({_id : req.params.id})
+    res.json({status: 'Mc eliminado'})
+  }catch(err){
+
+  }
 })
 
 /*

@@ -1,0 +1,31 @@
+.table-container {
+    .mc-row{
+        width: 100%;
+        border-bottom: 1px solid black;
+        @import '../../../../styles/ring/tablepointsinput.scss';
+        .name{
+            text-align: left;
+        }
+        .mcname{
+            text-align: left;
+        }
+        .phone{
+            text-align: left;
+        }
+        .social{
+            text-align: left;
+        }
+        .pts{
+            text-align: left;
+        }
+        .mc-controls{
+            position: absolute;
+        }
+    }
+    .enabled{
+        background-color: rgba(153, 147, 147, 0.384) !important;
+    }
+    .disabled{
+        background-color: transparent !important;
+    }
+}

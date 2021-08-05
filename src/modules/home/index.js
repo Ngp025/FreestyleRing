@@ -247,7 +247,6 @@ class Home extends Component {
       userInfo : data
     })
   }
-
   // Mount Component
   componentDidMount() {
     this.loadMcList()
@@ -256,9 +255,9 @@ class Home extends Component {
   }
 
   async loadMcList(){
-    await fetch('users/mclist/')
-      .then((res) =>{res.json()})
-      .then((json) => this.setState({mcList : json}))
+    await fetch('/mclist/')
+      .then(res => res.json())
+      .then(json => this.setState({mcList : json}))
   }
 
   navigationSwitch(){
@@ -278,8 +277,7 @@ class Home extends Component {
                   }}/>
               <h4 id="main-subtitle" className="main-subtitle opacityMainSubTitle animatedMainSubTitle">COMPETENCIAS DE FREESTYLE ONLINE</h4>
             </div>
-        );
-        break
+      );
       case "user-login" :
         return (
           <div
@@ -301,7 +299,7 @@ class Home extends Component {
           {login.updating()}
           {login.congrats()}
         </div>
-      )
+      );
       case "pre-enroll" : 
         return(
           <div id="pre-enroll" className="pre-enroll-content animatedO opacity">
@@ -325,7 +323,7 @@ class Home extends Component {
               </div>
             </div>
           </div>
-        )
+      );
       case "land" : 
       return(
         <div id="land" className="land-content opacityLand-content animatedLand-content">
@@ -342,7 +340,7 @@ class Home extends Component {
               <button id="mc-list" className="mc-list " onClick={()=>{this.navigationHandler("mcList"); setTimeout(()=>this.setState({navBar : "colapsed"}), 500)}}>TABLA DE PUNTOS</button>
             </div>
         </div>
-      )
+      );
       case "mcList" : 
       return(
         <div id="mcList-content" className="mcList-content animatedO opacity">
@@ -359,7 +357,7 @@ class Home extends Component {
                   {/*<label id={`mc-index-${index}`} key={`index-${index}`} className="mc-index">{`${index} - `}</label> */}
                   <div id={`user-data-box-${index}`} className="user-data-box" key={`data-box-${index}`}>
                   <label id={`mc-name-label-${index}`} key={`name-label-${index}`} className="mc-name-label">
-                    {mc.mcName}
+                    {mc.name}
                     </label>
                     </div>
                   </div>
@@ -390,7 +388,7 @@ class Home extends Component {
           <div id="mcList-div" className="mcList-div"></div>
           <button id="enroll-mcList" className="enroll" onClick={()=>{this.navigationHandler("pre-enroll")}}>INSCRIBIRSE</button>
        </div>
-      )
+      );
     }
   }
   
