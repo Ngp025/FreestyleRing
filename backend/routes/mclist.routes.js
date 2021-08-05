@@ -1,62 +1,41 @@
 const express = require('express');
-const users = express.Router();
-const Connetion = require('../models/users/usersConnection');
-const User = require('../models/users/users');
-const bcrypt = require('bcryptjs');
-
-// Editando Perfil
-users.put('/editProfile/:IDU', async (req, res) => {
-  console.log(req.body, 'edit profile');
-
-  await User.findByIdAndUpdate(
-    { _id: req.params.IDU },
-    {
-      $set: {
-        name: req.body.name,
-        document: req.body.document,
-        //'email': req.body.email,
-        born: req.body.born,
-        address: req.body.address,
-        phone: req.body.phone,
-        tutorsName: req.body.tutorsName,
-        tutorsDocument: req.body.tutorsDocument,
-      },
-    },
-    { returnNewDocument: true, new: true },
-    (err, doc) => {
-      if (err) {
-        console.log('Something wrong when change info!');
-        res.json({
-          alert: 'Error la edificion de perfil no pudo ser completada',
-        });
-      } else {
-        const UDT = {
-          name: doc.name,
-          document: doc.document,
-          born: doc.born,
-          // email: doc.email,
-          address: doc.address,
-          phone: doc.phone,
-          tutorsName: doc.tutorsName,
-          tutorsDocument: doc.tutorsDocument,
-        };
-        console.log(UDT);
-        res.json(UDT);
-      }
-    }
-  );
-});
+const mclist = express.Router();
+const Mclist = require('../models/users/mclist');
 
 // - - - - -  GET
-users.get('/mclist', async (req, res) =>{
- var mcList = await User.find({},{
+mclist.get('/mclist', async (req, res) =>{
+ var mcList = await Mclist.find({},{
    _id: false,
    mcName :true,
    link: true,
    social: true  
     })
+    console.log(mcList)
  res.json(mcList)
-} )
+})
+
+mclist.post('/newmc/:data', async (req, res) =>{
+try{
+  const { name, mcname, phone, link, social, pts } = JSON.parse(req.params.data)
+  const newmc = new Mclist({name, mcname, phone, social, link, pts })
+  if(!(newmc.mcname === '')){
+    if(!(newmc.pts === '')){
+      await newmc.save()
+      res.json({status: 'MC agregado'})
+    }else{
+      res.json({status: 'No puede dejar los puntos vacios'})
+    }
+  }else{
+    res.json({status: 'No puede dejar el nombre vacio'})
+  }
+}
+catch(err){
+  res.json(err)
+}
+
+})
+
+/*
 // Logout
 users.get('/logout/:IDU', async (req, res) => {
   //COLOCAR UN CONTADOR DE USUARIOS ELIMINADOS CON IPS
@@ -174,5 +153,5 @@ users.post('/betaregister/:email/1234', async (req, res) => {
     });
   }
 });
-
-module.exports = users;
+*/
+module.exports = mclist;

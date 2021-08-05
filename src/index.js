@@ -14,12 +14,13 @@ switch (location.href) {
 }""
 
 // Main Components
-const Home = lazy(() => import('./components/main/home'));
+const Home = lazy(() => import('./modules/home'));
+const Panel = lazy(() => import('./modules/admpanel'));
 // Team Mail Register
 //import CiudadEsports from './components/customers/ciudadesports/ciudadesports';
 // LEGAL IMPORTS
 const TermsAndPolitics = lazy(() =>
-  import('./components/main/legal/termsAndPolitics')
+  import('./modules/termsAndPolitics')
 );
 
 const Mision_HH = () => (
@@ -60,6 +61,7 @@ const Mision_HH = () => (
         <Route path='/terms-and-politics' component={TermsAndPolitics} exact />
         {/* Customers Components */}
         <Route path='/' component={Home} exact />
+        <Route path='/admpanel' component={Panel} exact />
       </Switch>
     </Suspense>
   </HashRouter>

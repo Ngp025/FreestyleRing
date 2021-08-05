@@ -29,7 +29,7 @@ server.listen(app.get('port'), () => {
 //
 
 // Importamos las referencias a la Base de dato
-//require('../backend/database');
+require('../backend/database');
 
 // Llamada a constante de express
 
@@ -85,7 +85,7 @@ const sessionMiddleware = session({
 
 // Routes
 // - - - - USSERS
-//app.use('/users', require('../backend/routes/users.routes'));
+app.use('/mclist', require('../backend/routes/mclist.routes'));
 
 // Starting server
 

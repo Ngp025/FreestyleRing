@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 
-console.log(process.env.MONGODB_URI)
+//console.log(process.env.PORT)
+
+const uri = "mongodb+srv://nicolas025:B8t9IIxWqrrA8iEc@cluster0.era5t.mongodb.net/misionhiphop?retryWrites=true&w=majority"
+
 mongoose.connect(
-  process.env.MONGODB_URI,
+  uri,
   {
     useNewUrlParser: true,
     useCreateIndex: true,

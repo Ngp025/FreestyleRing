@@ -8,8 +8,6 @@ import React, { Component, useContext, useState } from 'react';
 // SCSS imports
 import '../../styles/main/home.scss';
 import '../../styles/main/home-animations.scss';
-// Logim
-import login from '../user/login/loginFunctions';
 
 var allNavArray = []
 var navigationArray = [];
@@ -259,7 +257,7 @@ class Home extends Component {
 
   async loadMcList(){
     await fetch('users/mclist/')
-      .then((res) =>res.json())
+      .then((res) =>{res.json()})
       .then((json) => this.setState({mcList : json}))
   }
 
@@ -311,50 +309,19 @@ class Home extends Component {
             id='land-title'
             className='text-title'
             >
-              INSCRIPCIÓN
+              INFORMACIÓN
             </label>
             <div id="pre-enroll-data" className="pre-enroll-data-box">
-              <label id="enroll-faq-1" className="enroll-faq-1">¿Cómo participar?</label>
-              <p id="enroll-p-1" className="enroll-p-1">Todos los domingos</p>
-              {/* 
-              <label id="enroll-faq-2" className="enroll-faq-2">¿Cuando participar?</label>
-              <p id="enroll-p-2" className="enroll-p-2">Una vez enviado su link nuestro equipo de jurados seleccionara a los 64 mejores de cada semana dandoles acceso a la fase "Retadores"</p>
-              */}              
-              <label
-                id='label-link-register'
-                className='label-link-register'
-                htmlFor='link-input'>
-                Link con minuto de freestyle
-              </label>
-              <input
-                id='link-input'
-                className='link-register'
-                type='text'
-                placeholder='Link de con su video subido'
-              />
-              <label
-                id='label-social-register'
-                className='label-link-register'
-                htmlFor='social-input'>
-                Link de su red social (opcional)
-              </label>
-              <input
-                id='social-input'
-                className='social-register'
-                type='text'
-                placeholder='Red social de su importancia'
-              />
-              <button id="continue" className="continue" onClick={()=>{this.navigationHandler("user-login");}}>CONTINUAR</button>
+            <div id="main-content" className="main-content">
+              <label id="enroll-faq-1" className='text-subTitle'>¿Cómo participar?</label>
+              <p id="enroll-p-1" className="enroll-p-1">Los ultimos tres domingos del mes podras inscribirte en la plaza vicuña makena (Ramallo y Avenida Crámer - Saavedra), a partir de las 16hs </p>
+             </div> 
               <div id="footer-content" className="footer-content">
-                <label id="footer-title" className="footer-title">REGLAMENTO, FORMATO Y DISCORD</label>
-                <div id="compe-links-1" className="compe-links-1">
-                  <a id="reglamento" className="reglamento" onClick={()=>window.open("https://docs.google.com/document/d/1XVW1Iia837yXvfNcjmr__hfgIHaQaHvqq6G_rGSaoe8/edit?usp=sharing")}>REGLAMENTO</a>
-                  <a id="discord" className="discord" onClick={()=>window.open("https://discord.gg/AqSENSZ")}>DISCORD</a>
-                </div>
-                <div id="compe-links-2" className="compe-links-2"> 
-                  <a id="retadores" className="retadores" onClick={()=>window.open("https://docs.google.com/document/d/1VgcVfo1MAXmmvu7HO3L6Kxs6Dk8cQXimnyWwbCGQavA/edit?usp=sharing")}>RETADORES</a>
-                  <a id="pesos-pesados" className="pesos-pesados" onClick={()=>window.open("https://docs.google.com/document/d/1SJ9NaEW6OknLOD8uOTR-wOrZMP4NGCzQ46XvJtBXEgY/edit?usp=sharing")}>PESOS PESADOS</a>
-                </div>
+                <label id="footer-title" className='text-subTitle'>MÁS INFORMACIÓN</label>
+                <button id="continue" className="continue" onClick={()=>window.open("https://docs.google.com/document/d/1XVW1Iia837yXvfNcjmr__hfgIHaQaHvqq6G_rGSaoe8/edit?usp=sharing")}>REGLAMENTO GENERAL</button>
+                <button id="continue" className="continue" onClick={()=>window.open("https://discord.gg/AqSENSZ")}>NUESTRO DISCORD</button>
+                <button id="continue" className="continue" onClick={()=>window.open("https://docs.google.com/document/d/1VgcVfo1MAXmmvu7HO3L6Kxs6Dk8cQXimnyWwbCGQavA/edit?usp=sharing")}>F. RETADORES</button>
+                <button id="continue" className="continue" onClick={()=>window.open("https://docs.google.com/document/d/1SJ9NaEW6OknLOD8uOTR-wOrZMP4NGCzQ46XvJtBXEgY/edit?usp=sharing")}>F. PESOS PESADOS</button>
               </div>
             </div>
           </div>
@@ -370,9 +337,9 @@ class Home extends Component {
             </label>
             <div id="land-data" className="land-data-box animatedO opacity">
               <label id="enroll-help" className="enroll-help">Completa el formulario para enviar tu presentación</label>
-              <button id="enroll" className="enroll " onClick={()=>{this.navigationHandler("pre-enroll"); setTimeout(()=>this.setState({navBar : "colapsed"}), 500)}}>INSCRIBIRSE</button>
+              <button id="enroll" className="enroll " onClick={()=>{this.navigationHandler("pre-enroll"); setTimeout(()=>this.setState({navBar : "colapsed"}), 500)}}>INFORMACIÓN</button>
               <label id="mcList-help" className="mcList-help">Revisa un listado con los MCs sus videos de presentación y sus redes</label>
-              <button id="mc-list" className="mc-list " onClick={()=>{this.navigationHandler("mcList"); setTimeout(()=>this.setState({navBar : "colapsed"}), 500)}}>LISTA DE MC</button>
+              <button id="mc-list" className="mc-list " onClick={()=>{this.navigationHandler("mcList"); setTimeout(()=>this.setState({navBar : "colapsed"}), 500)}}>TABLA DE PUNTOS</button>
             </div>
         </div>
       )

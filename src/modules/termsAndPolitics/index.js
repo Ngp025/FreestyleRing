@@ -1,6 +1,6 @@
 // React imports
 import React, { Component } from 'react';
-import '../../../styles/main/termAndCondition/termAndCond.scss';
+import '../../styles/main/termAndCondition/termAndCond.scss';
 
 class TermsAndPolitics extends Component {
   render() {
